@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BinChecker</string>
+    <string name="credit">Credit</string>
+    <string name="debit">Debit</string>
+    <string name="bin">Bin</string>
+    <string name="history">History</string>
+    <string name="check_bin_button">Check bin</string>
+</resources>
