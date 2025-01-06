@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">BinChecker</string>
-    <string name="credit">Credit</string>
-    <string name="debit">Debit</string>
     <string name="bin">Bin</string>
     <string name="history">History</string>
     <string name="check_bin_button">Check bin</string>
+    <string name="country">Country</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="card_scheme">Card scheme</string>
+    <string name="bank">Bank</string>
+    <string name="error_dialog_title">Something went wrong</string>
 </resources>

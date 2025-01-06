@@ -8,6 +8,7 @@ import com.w1nkkkk.binchecker.domain.BinRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 class BinViewModel (
@@ -22,13 +23,13 @@ class BinViewModel (
     val bin : LiveData<State> = _bin
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
-        _bin.value = State.Error(exception)
+        _bin.postValue(State.Error(exception))
     }
 
     fun getBin(bin : Int) {
-        CoroutineScope(coroutineExceptionHandler + Dispatchers.IO).launch {
+        CoroutineScope(coroutineExceptionHandler + Dispatchers.IO + SupervisorJob()).launch {
             val data = repository.getBin(bin)
-            _bin.value = State.Success(data)
+            _bin.postValue(State.Success(data))
         }
     }
 }
