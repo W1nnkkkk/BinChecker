@@ -10,10 +10,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.w1nkkkk.binchecker.domain.ConnectivityReceiver
 import com.w1nkkkk.binchecker.presentation.components.BottomBinAppBar
 import com.w1nkkkk.binchecker.presentation.navigation.SetupNavGraph
 import com.w1nkkkk.binchecker.presentation.theme.BinCheckerTheme
 import com.w1nkkkk.binchecker.presentation.viewmodels.BinViewModel
+import com.w1nkkkk.binchecker.presentation.viewmodels.HistoryViewModel
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -24,19 +26,23 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var binViewModel: BinViewModel
 
+    @Inject
+    lateinit var historyViewModel: HistoryViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ConnectivityReceiver.checkInternetConnection(this@MainActivity)
         setContent {
             BinCheckerTheme {
                 val navController = rememberNavController()
                 Scaffold(
-                    bottomBar = { BottomBinAppBar(navController, this@MainActivity) }
+                    bottomBar = { BottomBinAppBar(navController) }
                 ) { containerPadding ->
                     Box(modifier = Modifier
                         .fillMaxSize()
                         .padding(bottom = containerPadding.calculateBottomPadding())
                     ) {
-                        SetupNavGraph(navController, binViewModel, this@MainActivity)
+                        SetupNavGraph(navController, binViewModel, historyViewModel)
                     }
                 }
             }

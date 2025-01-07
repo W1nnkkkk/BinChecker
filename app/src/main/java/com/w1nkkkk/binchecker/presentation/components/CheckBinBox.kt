@@ -33,6 +33,23 @@ fun CheckBinBox(binViewModel: BinViewModel) {
     var text by remember { mutableStateOf("") }
     val context = LocalContext.current
 
+    var showDialog by remember {
+        mutableStateOf(false)
+    }
+    var dialogText by remember {
+        mutableStateOf("")
+    }
+
+    if (showDialog) {
+        val ok = { showDialog = false }
+        ErrorDialog(
+            dialogText,
+            context.getString(R.string.error_dialog_title),
+            onClickOk = ok,
+            onDismiss = ok
+        )
+    }
+
     Column {
         OutlinedTextField(
             value = text,
@@ -48,11 +65,13 @@ fun CheckBinBox(binViewModel: BinViewModel) {
             Button(
                 onClick = {
                     try {
+                        if (text.length < maxBinLength) throw Exception(context.getString(R.string.bin_length))
                         val data = text.toInt()
                         binViewModel.getBin(data)
                         text = ""
                     } catch (ex: Exception) {
-                        Toast.makeText(context, ex.localizedMessage, Toast.LENGTH_SHORT).show()
+                        showDialog = true
+                        dialogText = ex.localizedMessage ?: ""
                     }
                 },
                 shape = RoundedCornerShape(12.dp),

@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -19,8 +20,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.w1nkkkk.binchecker.presentation.navigation.Route
 
 @Composable
-fun BottomBinAppBar(navController: NavController, context: Context) {
+fun BottomBinAppBar(navController: NavController) {
     val isDarkTheme = isSystemInDarkTheme()
+    val context = LocalContext.current
     val listItems = listOf(
         Route.Main,
         Route.History

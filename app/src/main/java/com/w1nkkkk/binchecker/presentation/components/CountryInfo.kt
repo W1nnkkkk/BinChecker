@@ -15,22 +15,21 @@ import com.w1nkkkk.binchecker.R
 import com.w1nkkkk.binchecker.domain.BinModel
 
 @Composable
-fun BinInfo(binModel: BinModel) {
+fun CountryInfo(binInfo : BinModel) {
     val context = LocalContext.current
-
-    Column(modifier = Modifier.fillMaxWidth()) {
-
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Absolute.Center) {
-            BoldBinText(context.getString(R.string.card_scheme))
-            BinText(": ${binModel.scheme}")
-        }
-
+    Column (
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        BoldBinText(context.getString(R.string.country))
+        BinText(binInfo.countryName)
         Spacer(modifier = Modifier.padding(vertical = 5.dp))
-
-        BankInfo(binModel)
-
-        Spacer(modifier = Modifier.padding(vertical = 10.dp))
-
-        CountryInfo(binModel)
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+            BoldBinText(context.getString(R.string.latitude))
+            BinText(": ${binInfo.countryLatitude}")
+            Spacer(modifier = Modifier.padding(horizontal = 5.dp))
+            BoldBinText(context.getString(R.string.longitude))
+            BinText(": ${binInfo.countryLongitude}")
+        }
     }
 }

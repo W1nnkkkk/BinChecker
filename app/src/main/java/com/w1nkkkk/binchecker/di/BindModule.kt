@@ -1,6 +1,7 @@
 package com.w1nkkkk.binchecker.di
 
 import com.w1nkkkk.binchecker.data.datasource.remote.BinRemoteDatasource
+import com.w1nkkkk.binchecker.data.datasource.remote.BinRemoteDatasourceImpl
 import com.w1nkkkk.binchecker.data.datasource.remote.BinRemoteDatasourceTestImpl
 import com.w1nkkkk.binchecker.data.repository.BinRepositoryImpl
 import com.w1nkkkk.binchecker.domain.BinRepository
@@ -17,7 +18,7 @@ object BindModule {
 
     @Provides
     fun provideBinRemoteDatasource() : BinRemoteDatasource {
-        return BinRemoteDatasourceTestImpl()
+        return BinRemoteDatasourceImpl()
     }
 
     @Provides

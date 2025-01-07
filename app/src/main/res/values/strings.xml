@@ -9,4 +9,5 @@
     <string name="card_scheme">Card scheme</string>
     <string name="bank">Bank</string>
     <string name="error_dialog_title">Something went wrong</string>
+    <string name="bin_length">The bin must be 6 characters.</string>
 </resources>

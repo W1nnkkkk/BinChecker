@@ -26,5 +26,4 @@ fun MainScreen(binModel: BinModel, binViewModel: BinViewModel) {
             }
         }
     }
-
 }
