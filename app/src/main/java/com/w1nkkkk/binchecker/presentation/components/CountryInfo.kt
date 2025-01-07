@@ -1,5 +1,6 @@
 package com.w1nkkkk.binchecker.presentation.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,7 +25,9 @@ fun CountryInfo(binInfo : BinModel) {
         BoldBinText(context.getString(R.string.country))
         BinText(binInfo.countryName)
         Spacer(modifier = Modifier.padding(vertical = 5.dp))
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+        Row(Modifier.fillMaxWidth().clickable {
+            openLocation(context, binInfo.countryLatitude, binInfo.countryLongitude, binInfo.countryName)
+        }, horizontalArrangement = Arrangement.Center) {
             BoldBinText(context.getString(R.string.latitude))
             BinText(": ${binInfo.countryLatitude}")
             Spacer(modifier = Modifier.padding(horizontal = 5.dp))

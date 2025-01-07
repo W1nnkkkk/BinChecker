@@ -16,7 +16,7 @@ class BinRemoteDatasourceTestImpl : BinRemoteDatasource {
             bank = BinDtoModel.BankDtoModel(
                 name = "SBER",
                 url = "https://online.sberbank.ru/",
-                phone = null
+                phone = "84952457979"
             )
         )
     }
